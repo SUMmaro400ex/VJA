@@ -10,6 +10,7 @@ class StartupsController < ApplicationController
   # GET /startups/1
   # GET /startups/1.json
   def show
+    @review = Review.new
   end
 
   # GET /startups/new
