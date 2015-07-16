@@ -7,8 +7,11 @@
 
 <p>
   <strong>Startup:</strong>
-  <%= @review.startup %>
+  <%= @review.startup.name %>
 </p>
-
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<% if @review.startup.nil? %>
+  <%= link_to 'Back', reviews_path %>
+<% else %>
+  <%= link_to 'Back', @review.startup %>
+<% end %> |
+<%= link_to 'Edit', edit_review_path(@review) %>
