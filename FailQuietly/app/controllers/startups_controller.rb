@@ -1,5 +1,6 @@
 class StartupsController < ApplicationController
   before_action :set_startup, only: [:show, :edit, :update, :destroy]
+  before_action :require_user , only: [:new, :edit, :update, :destroy]
 
   # GET /startups
   # GET /startups.json
