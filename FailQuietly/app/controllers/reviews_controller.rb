@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   # needs refactoring
   before_action :set_review , only: [:show, :edit, :update, :destroy]
-  before_action :require_user , only: [:new, :edit, :update, :destroy]
+  before_action :require_user , only: [:create, :edit, :update, :destroy]
 
   # GET /reviews
   # GET /reviews.json
