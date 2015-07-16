@@ -7,6 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <div class="nav pull-right">
+      
+      <!-- this could be alternative logic for user login -->
+
+      <%# if current_user %>
+        <!-- Signed in as <%#= current_user.name %> | <%#= link_to "Logout", '/logout' %> -->
+      <%# else %>
+        <!-- <%#= link_to 'Login', '/login' %> | <%#= link_to 'Signup', '/signup' %> -->
+      <%# end %>
+      <% if current_user %> 
+        <ul> 
+        <li><%= current_user.email %></li> 
+        <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+      </ul> 
+    <% else %> 
+      <ul> 
+        <li><%= link_to "Login", 'login' %></a></li> 
+        <li><%= link_to "Signup", 'signup' %></a></li> 
+      </ul> 
+    <% end %>
+          
+    </div>
 
 <%= yield %>
 
