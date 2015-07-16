@@ -1,21 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <div id="heading">
-  <h1>Fail Quietly</h1>
-  <h2><em>You've tried the best, now try the rest!</em></h2>
+  <% if current_user %>
+    <!-- <ul> -->
+    <p id="login"><%= current_user.email %>  |  <%= link_to "Log out", logout_path, method: "delete" %></p>
+  <!-- </ul> -->
+<% else %>
+  <ul>
+    <p id="login"><%= link_to "Login", 'login' %>  |  <%= link_to "Signup", 'signup' %></p>
+  </ul>
+<% end %>
 </div>
-<div id="new"><%= link_to 'New Startup', new_startup_path %></div>
+<div id="slogan">
+  <h1>You've tried the best,</h1>
+  <h1 id="secondline">now try the rest!</h1>
+</div>
+
+
 <div id="content">
+  <h1> Best of the Worst</h1>
+  <div id="new"><%= link_to 'Submit a Startup', new_startup_path %></div>
   <% @startups.each do |startup| %>
     <div class="app">
       <%= image_tag startup.url %>
       <p><%= startup.name %></p>
       <p>$<%= startup.price %></p>
       <p><%= link_to 'Show Me More', startup %></p>
-      <p><%= link_to 'Edit', edit_startup_path(startup) %>
-      <%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <p><%= link_to 'Edit', edit_startup_path(startup) if current_user && current_user == startup.user %>
+      <%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } if current_user && current_user == startup.user %></p>
     </div>
   <% end %>
 </div>
+
+<p id="footer">VJA Associates<br>A WebApp by Volney, Jon, and Angelica</p>
 
 
