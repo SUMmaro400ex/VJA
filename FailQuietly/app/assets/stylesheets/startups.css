@@ -95,3 +95,56 @@ h1#secondline{
 p#footer{
   font-size: 2vh;
 }
+
+#startupShowImage{
+  float: left;
+  text-align: left;
+  width: 20vw;
+}
+#startupShowImage img{
+  margin-top: 10vh;
+  padding-left: 20vw;
+  padding-right: 5vw;
+  border-right: 1px solid black;
+  clear: both;
+  width: 20vw;
+}
+#showArea{
+  clear: both;
+  /*margin-top: 10vh;*/
+  text-align: left;
+  width: 100%;
+}
+
+#showArea h1{
+  padding-top: 15vh;
+}
+
+#showArea h1, #showArea h2, #showArea p, #showArea h3{
+    font-family: 'Oswald';
+    margin-left: 50vw;
+}
+
+#showArea h2{
+  font-size: 2.5vw;
+}
+
+#showArea p{
+  font-size: 2vw;
+}
+
+#reviewarea h1{
+  padding-top: 5.5vh;
+  color: white;
+  height:8vh;
+  background-color: darkgray;
+}
+
+
+#reviewarea{
+  clear: both;
+  padding-top: 10vh;
+}
+#addOn{
+  font-size: 1.5vh;
+}
