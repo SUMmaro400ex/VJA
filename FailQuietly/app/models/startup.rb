@@ -7,7 +7,7 @@ class Startup < ActiveRecord::Base
   multiline: true, 
   message: 'must be a url for gif, jpg, or png image.'
   }
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   def formatted_price
   	#rice_in_dollars = price.to_f / 100

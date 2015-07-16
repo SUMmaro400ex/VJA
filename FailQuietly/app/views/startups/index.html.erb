@@ -1,33 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Startups</h1>
+<div id="heading">
+  <h1>Fail Quietly</h1>
+  <h2><em>You've tried the best, now try the rest!</em></h2>
+</div>
+<div id="new"><%= link_to 'New Startup', new_startup_path %></div>
+<div id="content">
+  <% @startups.each do |startup| %>
+    <div class="app">
+      <%= image_tag startup.url %>
+      <p><%= startup.name %></p>
+      <p>$<%= startup.price %></p>
+      <p><%= link_to 'Show Me More', startup %></p>
+      <p><%= link_to 'Edit', edit_startup_path(startup) %>
+      <%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @startups.each do |startup| %>
-      <tr>
-        <td><%= startup.name %></td>
-        <td><%= startup.description %></td>
-        <td><%= startup.formatted_price %></td>
-        <td><%= startup.url %></td>
-        <td><%= link_to 'Show', startup %></td>
-        <td><%= link_to 'Edit', edit_startup_path(startup) %></td>
-        <td><%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Startup', new_startup_path %>
