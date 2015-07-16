@@ -1,10 +1,23 @@
 <p id="notice"><%= notice %></p>
 <div id="heading">
-  <h1>Fail Quietly</h1>
-  <h2><em>You've tried the best, now try the rest!</em></h2>
+  <% if current_user %>
+    <!-- <ul> -->
+    <p id="login"><%= current_user.email %>  |  <%= link_to "Log out", logout_path, method: "delete" %></p>
+  <!-- </ul> -->
+<% else %>
+  <ul>
+    <p id="login"><%= link_to "Login", 'login' %>  |  <%= link_to "Signup", 'signup' %></p>
+  </ul>
+<% end %>
 </div>
-<div id="new"><%= link_to 'New Startup', new_startup_path %></div>
+<div id="slogan">
+  <h1>You've tried the best,</h1>
+  <h1 id="secondline">now try the rest!</h1>
+</div>
+
 <div id="content">
+  <h1> Best of the Worst</h1>
+  <div id="new"><%= link_to 'Submit a Startup', new_startup_path %></div>
   <% @startups.each do |startup| %>
     <div class="app">
       <%= image_tag startup.url %>
@@ -16,4 +29,5 @@
     </div>
   <% end %>
 </div>
+<p id="footer">VJA Associates<br>A WebApp by Volney, Jon, and Angelica</p>
 <br>
