@@ -31,5 +31,11 @@ Added on: <%=  time_ago_in_words(review.created_at) %>
 <h3>New Review</h3>
 <%= render 'reviews/form' %>
 
-<%= link_to 'Edit', edit_startup_path(@startup) %> |
+<% if current_user %> 
+  
+    <%= link_to 'Edit', edit_startup_path(@startup) %>
+  
+<% end %>
+
+<%#= link_to 'Edit', edit_startup_path(@startup) %> |
 <%= link_to 'Back', startups_path %>

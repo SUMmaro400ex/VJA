@@ -1,6 +1,7 @@
 class StartupsController < ApplicationController
   before_action :set_startup, only: [:show, :edit, :update, :destroy]
-  before_action :require_user , only: [:new, :edit, :update, :destroy]
+  before_action :require_user , only: [:new]
+
 
   # GET /startups
   # GET /startups.json
@@ -26,9 +27,10 @@ class StartupsController < ApplicationController
   # POST /startups
   # POST /startups.json
   def create
-    @startup = Startup.new(startup_params)
+    @startup = current_user.startups.new(startup_params)
 
     respond_to do |format|
+
       if @startup.save
         format.html { redirect_to @startup, notice: 'Startup was successfully created.' }
         format.json { render :show, status: :created, location: @startup }
@@ -71,6 +73,6 @@ class StartupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def startup_params
-      params.require(:startup).permit(:name, :description, :price, :url)
+      params.require(:startup).permit(:name, :description, :price, :url, :user_id)
     end
 end
