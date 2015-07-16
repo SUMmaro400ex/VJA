@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716020857) do
+ActiveRecord::Schema.define(version: 20150716200100) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150716020857) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "reviews", ["startup_id"], name: "index_reviews_on_startup_id"
+  add_index "reviews", ["startup_id"], name: "index_reviews_on_startup_id", using: :btree
 
   create_table "startups", force: :cascade do |t|
     t.string   "name"
@@ -29,7 +32,10 @@ ActiveRecord::Schema.define(version: 20150716020857) do
     t.string   "url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
+
+  add_index "startups", ["user_id"], name: "index_startups_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150716020857) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "role"
   end
 
+  add_foreign_key "reviews", "startups"
 end

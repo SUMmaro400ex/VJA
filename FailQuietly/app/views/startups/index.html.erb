@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+
 <div id="heading">
   <% if current_user %>
     <!-- <ul> -->
@@ -15,6 +16,7 @@
   <h1 id="secondline">now try the rest!</h1>
 </div>
 
+
 <div id="content">
   <h1> Best of the Worst</h1>
   <div id="new"><%= link_to 'Submit a Startup', new_startup_path %></div>
@@ -24,10 +26,12 @@
       <p><%= startup.name %></p>
       <p>$<%= startup.price %></p>
       <p><%= link_to 'Show Me More', startup %></p>
-      <p><%= link_to 'Edit', edit_startup_path(startup) %>
-      <%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <p><%= link_to 'Edit', edit_startup_path(startup) if current_user && current_user == startup.user %>
+      <%= link_to 'Destroy', startup, method: :delete, data: { confirm: 'Are you sure?' } if current_user && current_user == startup.user %></p>
     </div>
   <% end %>
 </div>
+
 <p id="footer">VJA Associates<br>A WebApp by Volney, Jon, and Angelica</p>
-<br>
+
+
